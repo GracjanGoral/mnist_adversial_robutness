@@ -44,7 +44,7 @@ attack = LinfPGDAttack(model,
                        config['epsilon'],
                        config['k'],
                        config['a'],
-                       config['random_start'],
+                       config['bool_uniform'],
                        config['loss_func'])
 
 # Setting up the Tensorboard and checkpoint outputs
