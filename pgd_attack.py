@@ -50,13 +50,13 @@ class LinfPGDAttack:
   def perturb(self, x_nat, y, sess):
 
     if self.rand:
-      x = uniform_random(self.rand, x_nat, self.epsilon)
+      x = uniform_random(x_nat, self.epsilon)
     elif self.bool_gauss:
       x = grando_transform_gauss_batch(x_nat, self.mean, self.variance)
     elif self.bool_rotation:
       x = grando_transform_rotate_batch(x_nat, self.angle)
     elif self.bool_shift:
-      x = ndo_transform_shift_batch(x_nat, self.shift)
+      x = grando_transform_shift_batch(x_nat, self.shift)
 
     for i in range(self.k):
       grad = sess.run(self.grad, feed_dict={self.model.x_input: x,
