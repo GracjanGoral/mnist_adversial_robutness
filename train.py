@@ -45,15 +45,7 @@ attack = LinfPGDAttack(model,
                        config['k'],
                        config['a'],
                        config['bool_uniform'],
-                       config['loss_func'], 
-                       config['angle'],
-		       config['shift'],
-		       config['mean'],
-		       config['variance'],
-                       config['loss_func'],
-		       config['bool_rotation'],
-		       config['bool_shift'],
-		       config['bool_gauss'])
+					   config['loss_func'])
 
 
 # Setting up the Tensorboard and checkpoint outputs
