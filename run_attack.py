@@ -38,7 +38,7 @@ def run_attack(checkpoint, x_adv, epsilon, mean, variance, bool_gauss, bool_unif
     print('maximum perturbation found: {}'.format(l_inf))
     print('maximum perturbation allowed: {}'.format(epsilon))
 
-  if l_inf > mean + 0.0001 and bool_gauss:
+  if l_inf > variance + 0.0001 and bool_gauss:
     print('maximum perturbation found: {}'.format(l_inf))
     print('maximum perturbation allowed: {}'.format(mean))
 
