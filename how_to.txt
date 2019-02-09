@@ -1,0 +1,22 @@
+W tym pliku tekstowym piszcie proszę wszytskie ułatniewnia związane z Google Platform Cloud np. jak zdobyć te
+wytrenowane macierze. 
+--------------------------------------------------------------------------------------------------------------------------
+Aby przesłać plik z komputera do maszyny google, można wejść w ustawnia w prawym górnym rogu, gdy przez ssh połączyliśmy 
+się z maszyną i otworzyliśmy ją w nowym oknie przeglądarki, znajdziecie tam opcje "pobierz plik".
+--------------------------------------------------------------------------------------------------------------------------
+Wątek: 22.01.19;
+Zastanwaim się czy dorzucić do architektury sieci "mnist" funkcję "Dropout", oczywiście z prawdopodobieństwem 0.5. 
+Nie wiem czy to pomoże. Sądze, że to będzie zależeć od zaburzenia jakie damy. Chciałbym aby funkcja "Dropuot" oczyściła
+trochę zakłucenia, niemniej może ona wyczyścić trochę dobre piksele, dlatego myślę, że to zależy od zaburzenia jakie dodamy.
+Już zrozumiałem normę l niskończoność i poprawiłem funkcję "grando_transform_gauss" dodając odpowiednio funkcje "clip".
+Kończę proces.
+--------------------------------------------------------------------------------------------------------------------------
+Wątek:23.01.19;
+Okazało się, że obrót i przesunięcie zdjęcia zmnienia "wartość" pikseli i musiałem dodać funkcję "clip" i wrzuciłem norme l niskończoność. Dziś postaram się wrzucić tabelkę obrazującą skuteczność modelu w zależności od urzytego ataku.
+Kończę proces.
+--------------------------------------------------------------------------------------------------------------------------
+Wątek:24.01.19;
+Zastanwaim się czy nie zrobić takiego eksperymentu: dla różnych epsilonów, średnich,... przeprowadzić zaburzenie na zdjęciach a później to przedtswić na wykresie to jest, na osi X będzie wartość zaburzenia a na osi Y skuteczność predykcji.
+Dodałem plik "data_visualization.py". Przedstawia on wyniki moich eskperymentów na danych. Zaskakujące jest to, że jak zwiększymy średnia z 0 do 0.5 w gaussowskim zaburzeniu, to prdykcja wynosi 0.01%; z jeżeli chodzi o przesunięcia, to nie jestem zaskoczony.
+KOńczę proces.
+..........................................................................................................................

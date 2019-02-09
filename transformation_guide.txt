@@ -1,0 +1,23 @@
+Wrzucam cztery pliki: "config.json", "pgd_attack.py", "run_attack.py" i "transform.py". Trzy pierwsze są modyfikacjami plików
+pochodzących z "MadryLab/mnist_challenge" (https://github.com/MadryLab/mnist_challenge).
+-------------------------------------------------------------------------------------------------------------------------------
+Plik "transfor.py" zawira cztery funkcje:
+"uniform_random" - jest, to funkcja wprowadzona przez Mądrego; dodaje ona szum pochodzący z rozkładu jednorodnego;
+"grando_transform_gauss_batch" - jest to funkcja różniąca się od poprzedniej rozkładem jakim dodajemy;
+"grando_transform_rotate_batch" - jest to funkcja, która obraca zdjęcie; jescze nie wiem, co jest środkiem obrotu;
+"grando_transform_shift_batch" - jest to funkcja, która poddaje zdjęcie translacji, odbywa się równomiernie wzdłóż każdej osi;
+-------------------------------------------------------------------------------------------------------------------------------
+Plik "config.json" został uzupełniony o brakujące parametry; domyślnie ustawiona jest transformacja poprzez obrót 
+o kąt 45 stopni; model_dir: "models/adv_trained".
+Możecie w nim zmieniać, którą funkcję chcecie przetestować oraz wybrać dla niej odpowiednie parametry.
+-------------------------------------------------------------------------------------------------------------------------------
+Plik "pgd_attack.py" i "run_attac.py" jest małą modyfikacją orginalnego pliku. Zrobiłem tak, by działało.
+-------------------------------------------------------------------------------------------------------------------------------
+Plik "example.py" i "grando_functions.py" zostały zmodyfikowane o przykład zakłócenia gaussowskiego.
+-------------------------------------------------------------------------------------------------------------------------------
+Jescze nie wiem jak zdobyć plik, do którego zapisują się stany obliczeń tj. pewnie moża zrobić zrzut dysku, ale jest to płatne,
+szukam innego rozwiązania; gdy zdnajdę, to zrobię wykresy;
+-------------------------------------------------------------------------------------------------------------------------------
+Wystarczy, że ściągniecie "mnist_challenge" i zastąpicie pliki o tej samej nazwie Naszymi plikami na repzytorium tj:
+"config.json", "pgd_attack.py", "run_attack.py" oraz dodacie plik "transform.py". Powinno działać. Proszę Was, sprawdźcie czy wszystko działa.
+-------------------------------------------------------------------------------------------------------------------------------
