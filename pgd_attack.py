@@ -100,7 +100,7 @@ if __name__ == '__main__':
 			 config['angle'],
 			 config['shift'],
 			 config['mean'],
-			 config['variance']
+			 config['variance'],
                          config['loss_func'],
 			 config['bool_rotation'],
 			 config['bool_shift'],
