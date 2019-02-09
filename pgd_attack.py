@@ -69,7 +69,7 @@ class LinfPGDAttack:
 	x = np.clip(x, x_nat - self.mean, x_nat + self.mean)
 	x = np.clip(x, 0, 1)
       elif self.bool_rotation or self.bool_shift:
-# 	x = np.clip(x, x_nat - self.shift, x_nat + self.shift)
+ 	x = np.clip(x, x_nat - self.shift, x_nat + self.shift)
 	x = np.clip(x, 0, 1)
 
     return x
