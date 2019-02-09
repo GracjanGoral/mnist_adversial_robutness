@@ -66,7 +66,7 @@ class LinfPGDAttack:
         x = np.clip(x, x_nat - self.epsilon, x_nat + self.epsilon)
 	x = np.clip(x, 0, 1)
       elif self.bool_gauss:
-	x = np.clip(x, x_nat - self.mean, x_nat + self.mean)
+	x = np.clip(x, x_nat - self.variance, x_nat + self.variance)
 	x = np.clip(x, 0, 1)
       elif self.bool_shift:
  	x = np.clip(x, x_nat - self.shift, x_nat + self.shift)
