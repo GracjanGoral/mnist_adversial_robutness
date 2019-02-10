@@ -59,7 +59,7 @@ class LinfPGDAttack:
     elif self.bool_shift:
       x = grando_transform_shift_batch(x_nat, self.shift)
 		elif self.bool_natural:
-        x = np.copy(x_nat)
+      x = np.copy(x_nat)
 
     for i in range(self.k):
       grad = sess.run(self.grad, feed_dict={self.model.x_input: x,
