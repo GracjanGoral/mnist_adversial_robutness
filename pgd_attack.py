@@ -28,7 +28,7 @@ class LinfPGDAttack:
     self.bool_roration = bool_rotation
     self.bool_shift = bool_shift
     self.bool_gauss = bool_natural
-    self.bool_natural = bool_batural
+    self.bool_natural = bool_natural
     
 
     if loss_func == 'xent':
