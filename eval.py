@@ -35,20 +35,36 @@ mnist = input_data.read_data_sets('MNIST_data', one_hot=False)
 if eval_on_cpu:
   with tf.device("/cpu:0"):
     model = Model()
-    attack = LinfPGDAttack(model, 
+    attack = LinfPGDAttack(model,
                            config['epsilon'],
                            config['k'],
                            config['a'],
-                           config['random_start'],
-                           config['loss_func'])
+                           config['bool_uniform'],
+                           config['angle'],
+                           config['shift'],
+                           config['mean'],
+                           config['variance'],
+                           config['loss_func'],
+                           config['bool_rotation'],
+                           config['bool_shift'],
+                           config['bool_gauss'],
+                           config['bool_natural'])
 else:
   model = Model()
-  attack = LinfPGDAttack(model, 
+  attack = LinfPGDAttack(model,
                          config['epsilon'],
                          config['k'],
                          config['a'],
-                         config['random_start'],
-                         config['loss_func'])
+                         config['bool_uniform'],
+                         config['angle'],
+                         config['shift'],
+                         config['mean'],
+                         config['variance'],
+                         config['loss_func'],
+                         config['bool_rotation'],
+                         config['bool_shift'],
+                         config['bool_gauss'],
+                         config['bool_natural'])
 
 global_step = tf.contrib.framework.get_or_create_global_step()
 
