@@ -52,7 +52,8 @@ attack = LinfPGDAttack(model,
                        config['bool_rotation'],
                        config['bool_shift'],
                        config['bool_gauss'],
-                       config['loss_func'])
+                       config['loss_func'],
+                       config['bool_natural'])
 
 # Setting up the Tensorboard and checkpoint outputs
 model_dir = config['model_dir']
