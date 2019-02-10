@@ -58,6 +58,8 @@ class LinfPGDAttack:
       x = grando_transform_rotate_batch(x_nat, self.angle)
     elif self.bool_shift:
       x = grando_transform_shift_batch(x_nat, self.shift)
+		elif self.bool_natural:
+        x = np.copy(x_nat)
 
     for i in range(self.k):
       grad = sess.run(self.grad, feed_dict={self.model.x_input: x,
@@ -75,9 +77,7 @@ class LinfPGDAttack:
       elif self.bool_rotation:
 	      x = np.clip(x, x_nat - self.angle, x_nat + self.angle)
       	x = np.clip(x, 0, 1)
-      elif self.bool_natural:
-        x = np.copy(x_nat)
-	return x
+	 return x
 
 if __name__ == '__main__':
   import json
