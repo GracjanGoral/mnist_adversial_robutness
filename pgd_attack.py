@@ -12,7 +12,7 @@ import numpy as np
 
 
 class LinfPGDAttack:
-  def __init__(self, model, epsilon, k, a, random_start, loss_func):
+  def __init__(self, model, epsilon, k, a, bool_uniform, angle, shift, mean, variance, loss_func, bool_rotation, bool_shift, bool_gauss, bool_natural):
     """Attack parameter initialization. The attack performs k steps of
        size a, while always staying within epsilon from the initial
        point."""
@@ -20,7 +20,16 @@ class LinfPGDAttack:
     self.epsilon = epsilon
     self.k = k
     self.a = a
-    self.rand = random_start
+    self.rand = bool_uniform
+    self.angle = angle
+    self.shift = shift
+    self.mean = mean
+    self.variance = variance
+    self.bool_roration = bool_rotation
+    self.bool_shift = bool_shift
+    self.bool_gauss = bool_natural
+    self.bool_natural = bool_batural
+    
 
     if loss_func == 'xent':
       loss = model.xent
@@ -43,8 +52,14 @@ class LinfPGDAttack:
     """Given a set of examples (x_nat, y), returns a set of adversarial
        examples within epsilon of x_nat in l_infinity norm."""
     if self.rand:
-      x = x_nat + np.random.uniform(-self.epsilon, self.epsilon, x_nat.shape)
-    else:
+      x = uniform_random(x_nat, self.epsilon)
+    elif self.bool_gauss:
+      x = grando_transform_gauss_batch(x_nat, self.mean, self.variance)
+    elif self.bool_rotation:
+      x = grando_transform_rotate_batch(x_nat, self.angle)
+    elif self.bool_shift:
+      x = grando_transform_shift(x_nat, self.shift)
+    elif self.bool_natural
       x = np.copy(x_nat)
 
     for i in range(self.k):
@@ -52,10 +67,20 @@ class LinfPGDAttack:
                                             self.model.y_input: y})
 
       x += self.a * np.sign(grad)
-
-      x = np.clip(x, x_nat - self.epsilon, x_nat + self.epsilon) 
-      x = np.clip(x, 0, 1) # ensure valid pixel range
-
+      
+      if self.rand:
+        x = np.clip(x, x_nat - self.epsilon, x_nat + self.epsilon)
+        x = np.clip(x, 0, 1)
+      elif self.bool_gauss:
+        x = np.clip(x, x_nat - self.variance, x_nat + self.variance)
+        x = np.clip(x, 0, 1)
+      elif self.bool_shift:
+        x = np.clip(x, x_nat - self.shift, x_nat + self.shift)
+        x = np.clip(x, 0, 1)
+      elif self.bool_rotation:
+        x = np.clip(x, x_nat - self.angle, x_nat + slef.angle)
+        x = np.clip(x, 0, 1)
+        
     return x
 
 
@@ -81,8 +106,16 @@ if __name__ == '__main__':
                          config['epsilon'],
                          config['k'],
                          config['a'],
-                         config['random_start'],
-                         config['loss_func'])
+                         config['bool_uniform'],
+                         config['angle']
+                         config['shift']
+                         config['mean']
+                         config['variance'],
+                         config['loss_func'],
+                         config['bool_rotation'],
+                         config['bool_shift'],
+                         config['bool_gauss'],
+                         config['bool_natural'])
   saver = tf.train.Saver()
 
   mnist = input_data.read_data_sets('MNIST_data', one_hot=False)
