@@ -74,7 +74,9 @@ class LinfPGDAttack:
       elif self.bool_rotation:
 	x = np.clip(x, x_nat - self.angle, x_nat + self.angle)
 	x = np.clip(x, 0, 1)
-
+      else:
+        x = np.copy(x_nat)
+	
     return x
 
 if __name__ == '__main__':
