@@ -54,13 +54,13 @@ class LinfPGDAttack:
        examples within epsilon of x_nat in l_infinity norm."""
     if self.rand:
       x = uniform_random(x_nat, self.epsilon)
-    elif self.bool_gauss:
+    if self.bool_gauss:
       x = grando_transform_gauss_batch(x_nat, self.mean, self.variance)
-    elif self.bool_rotation:
+    if self.bool_rotation:
       x = grando_transform_rotate_batch(x_nat, self.angle)
-    elif self.bool_shift:
+    if self.bool_shift:
       x = grando_transform_shift(x_nat, self.shift)
-    elif self.bool_natural:
+    if self.bool_natural:
       x = np.copy(x_nat)
 
     for i in range(self.k):
@@ -72,16 +72,15 @@ class LinfPGDAttack:
       if self.rand:
         x = np.clip(x, x_nat - self.epsilon, x_nat + self.epsilon)
         x = np.clip(x, 0, 1)
-      elif self.bool_gauss:
+      if self.bool_gauss:
         x = np.clip(x, x_nat - self.variance, x_nat + self.variance)
         x = np.clip(x, 0, 1)
-      elif self.bool_shift:
+      if self.bool_shift:
         x = np.clip(x, x_nat - self.shift, x_nat + self.shift)
         x = np.clip(x, 0, 1)
-      elif self.bool_rotation:
+      if self.bool_rotation:
         x = np.clip(x, x_nat - self.angle, x_nat + slef.angle)
         x = np.clip(x, 0, 1)
-    print(np.amin(x))
     return x
 
 
