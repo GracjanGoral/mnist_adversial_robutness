@@ -67,13 +67,13 @@ class LinfPGDAttack:
         x = np.clip(x, x_nat - self.epsilon, x_nat + self.epsilon)
        	x = np.clip(x, 0, 1)
       elif self.bool_gauss:
-	    x = np.clip(x, x_nat - self.variance, x_nat + self.variance)
-	    x = np.clip(x, 0, 1)
+	      x = np.clip(x, x_nat - self.variance, x_nat + self.variance)
+	      x = np.clip(x, 0, 1)
       elif self.bool_shift:
- 	    x = np.clip(x, x_nat - self.shift, x_nat + self.shift)
-	    x = np.clip(x, 0, 1)
+ 	      x = np.clip(x, x_nat - self.shift, x_nat + self.shift)
+	      x = np.clip(x, 0, 1)
       elif self.bool_rotation:
-	    x = np.clip(x, x_nat - self.angle, x_nat + self.angle)
+	      x = np.clip(x, x_nat - self.angle, x_nat + self.angle)
       	x = np.clip(x, 0, 1)
       elif self.bool_natural:
         x = np.copy(x_nat)
@@ -102,14 +102,14 @@ if __name__ == '__main__':
                          config['k'],
                          config['a'],
                          config['bool_uniform'],
-			             config['angle'],
-			             config['shift'],
-			             config['mean'],
-			             config['variance'],
+			                   config['angle'],
+			                   config['shift'],
+			                   config['mean'],
+			                   config['variance'],
                          config['loss_func'],
-			             config['bool_rotation'],
-			             config['bool_shift'],
-			             config['bool_gauss'],
+			                   config['bool_rotation'],
+			                   config['bool_shift'],
+			                   config['bool_gauss'],
                          config['bool_natural'])
   saver = tf.train.Saver()
 
