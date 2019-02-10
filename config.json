@@ -28,6 +28,7 @@
   "bool_rotation": true,
   "bool_shift": false,
   "bool_gauss": false,
+  "bool_natural": true,
   "store_adv_path": "attack.npy"
 }
 
