@@ -81,7 +81,7 @@ class LinfPGDAttack:
       elif self.bool_rotation:
         x = np.clip(x, x_nat - self.angle, x_nat + slef.angle)
         x = np.clip(x, 0, 1)
-      print(np.amin(x)
+    print(np.amin(x))
     return x
 
 
