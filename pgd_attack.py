@@ -13,7 +13,7 @@ from transform import *
 
 
 class LinfPGDAttack:
-  def __init__(self, model, epsilon, k, a, bool_uniform, angle, shift, mean, variance, loss_func, bool_rotation, bool_shift, bool_gauss):
+  def __init__(self, model, epsilon, k, a, bool_uniform, angle, shift, mean, variance, loss_func, bool_rotation, bool_shift, bool_gauss, bool_natural):
     """Attack parameter initialization. The attack performs k steps of
        size a, while always staying within epsilon from the initial
        point."""
@@ -29,6 +29,7 @@ class LinfPGDAttack:
     self.bool_rotation = bool_rotation
     self.bool_shift = bool_shift
     self.bool_gauss = bool_gauss
+    self.bool_natural = bool_natural
 
     if loss_func == 'xent':
       loss = model.xent
@@ -74,7 +75,7 @@ class LinfPGDAttack:
       elif self.bool_rotation:
 	x = np.clip(x, x_nat - self.angle, x_nat + self.angle)
 	x = np.clip(x, 0, 1)
-      else:
+      elif self.bool_natural:
         x = np.copy(x_nat)
 	
     return x
@@ -109,7 +110,8 @@ if __name__ == '__main__':
                          config['loss_func'],
 			 config['bool_rotation'],
 			 config['bool_shift'],
-			 config['bool_gauss'])
+			 config['bool_gauss'],
+                         config['bool_natural'])
   saver = tf.train.Saver()
 
   mnist = input_data.read_data_sets('MNIST_data', one_hot=False)
