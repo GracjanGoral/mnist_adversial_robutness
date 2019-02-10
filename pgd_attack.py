@@ -26,7 +26,7 @@ class LinfPGDAttack:
     self.shift = shift
     self.mean = mean
     self.variance = variance
-    self.bool_roration = bool_rotation
+    self.bool_rotation = bool_rotation
     self.bool_shift = bool_shift
     self.bool_gauss = bool_natural
     self.bool_natural = bool_natural
