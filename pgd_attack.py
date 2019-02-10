@@ -77,8 +77,7 @@ class LinfPGDAttack:
       	x = np.clip(x, 0, 1)
       elif self.bool_natural:
         x = np.copy(x_nat)
-	
-    return x
+	return x
 
 if __name__ == '__main__':
   import json
