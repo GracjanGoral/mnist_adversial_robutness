@@ -59,7 +59,7 @@ class LinfPGDAttack:
       x = grando_transform_rotate_batch(x_nat, self.angle)
     elif self.bool_shift:
       x = grando_transform_shift(x_nat, self.shift)
-    elif self.bool_natural
+    elif self.bool_natural:
       x = np.copy(x_nat)
 
     for i in range(self.k):
