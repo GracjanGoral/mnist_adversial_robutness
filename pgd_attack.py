@@ -107,9 +107,9 @@ if __name__ == '__main__':
                          config['k'],
                          config['a'],
                          config['bool_uniform'],
-                         config['angle']
-                         config['shift']
-                         config['mean']
+                         config['angle'],
+                         config['shift'],
+                         config['mean'],
                          config['variance'],
                          config['loss_func'],
                          config['bool_rotation'],
