@@ -28,7 +28,7 @@ class LinfPGDAttack:
     self.variance = variance
     self.bool_rotation = bool_rotation
     self.bool_shift = bool_shift
-    self.bool_gauss = bool_natural
+    self.bool_gauss = bool_gauss
     self.bool_natural = bool_natural
     
 
@@ -59,7 +59,7 @@ class LinfPGDAttack:
     if self.bool_rotation:
       x = grando_transform_rotate_batch(x_nat, self.angle)
     if self.bool_shift:
-      x = grando_transform_shift(x_nat, self.shift)
+      x = grando_transform_shift_batch(x_nat, self.shift)
     if self.bool_natural:
       x = np.copy(x_nat)
 
