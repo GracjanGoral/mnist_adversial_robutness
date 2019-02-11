@@ -82,6 +82,17 @@ class LinfPGDAttack:
         x = np.clip(x, x_nat - self.angle, x_nat + slef.angle)
         x = np.clip(x, 0, 1)
     return x
+ 
+
+  def grad_maps(self, x_ex, y, sess):
+    """Given a set of examples x, returns set of heat maps describing gradient attantion"""
+    
+    maps = []
+    for i,x in enumerate(x_ex):
+      grad = sess.run(self.grad, feed_dict={self.model.x_input: x[None,:],
+                                            self.model.y_input: [y[i]]})
+      maps.append(np.abs(grad))
+    return np.array(maps)
 
 
 if __name__ == '__main__':
